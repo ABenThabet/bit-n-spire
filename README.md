@@ -26,3 +26,13 @@ Schematics for the assembly of Bit'n'Spire :
   <img src="http://oi66.tinypic.com/2pzy889.jpg"/>
 </p>
   
+In the Link below you will find the latest Bit'n'Spire iso img <a href="link.com">Download here !</a> :
+  - Write the image to your memory card (need to be 8Go or +)
+  - Sudo apt-get update
+  - Sudo apt-get upgrade
+  - Reboot
+
+When accessing the ip address to your Rpi : BOOYA !!!! here is your 3D printing and Scanning dash and should be looking like this :
+<p align="center">
+  <img src="http://oi68.tinypic.com/10cln29.jpg"/>
+</p>
