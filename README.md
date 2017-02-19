@@ -1,7 +1,7 @@
 # bit-n-spire
 3D Printing and Scanning system for Raspberry pi
 
-Bit'n'Spire is actuually a 3D printing and scanning image for Raspberry pi (model 2 and 3) origially made of Astroprint, octoprint and Atlas 3D.
+Bit'n'Spire is actuually a 3D printing and scanning image for Raspberry pi (model 2 and 3) originally made of Astroprint, octoprint and Atlas 3D.
 
 The Idea was to build an independant, effective and low cost 3D printing and scanning system, coupled and interacting in a way that the user will have easy way to print multiple and different type of models available locally and in cloud, scan various objects or monuments and cloning them directly with simple actions.
 
@@ -32,7 +32,7 @@ In the Link below you will find the latest Bit'n'Spire iso img <a href="link.com
   - Sudo apt-get upgrade
   - Reboot
 
-When accessing the ip address to your Rpi : BOOYA !!!! here is your 3D printing and Scanning dash and should be looking like this :
+When accessing the ip address to your Rpi : BOOYA !!!! Your 3D printing and Scanning dashboard should be looking like this :
 <p align="center">
   <img src="http://oi68.tinypic.com/10cln29.jpg"/>
 </p>
