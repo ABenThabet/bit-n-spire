@@ -23,6 +23,6 @@ The project as described has the following structure :
   
 Schematics for the assembly of Bit'n'Spire :
 <p align="center">
-  <img src="http://oi66.tinypic.com/2pzy889.jpg" width="350"/>
+  <img src="http://oi66.tinypic.com/2pzy889.jpg"/>
 </p>
   
