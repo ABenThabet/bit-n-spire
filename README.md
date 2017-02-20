@@ -26,7 +26,7 @@ Schematics for the assembly of Bit'n'Spire :
   <img src="http://oi66.tinypic.com/2pzy889.jpg"/>
 </p>
   
-In the Link below you will find the latest Bit'n'Spire iso img <a href="link.com">Download here !</a> :
+In the Link below you will find the latest Bit'n'Spire iso img <a href="https://www.dropbox.com/s/bnh3ld7jokmn3hz/Bit%27n%27spire%20ver%203%20PFE.img?dl=0">Download here !</a> :
   - Write the image to your memory card (need to be 8Go or +)
   - Sudo apt-get update
   - Sudo apt-get upgrade
