@@ -1,0 +1,43 @@
+<div class="row" style="max-width:62.5rem;margin-left:auto;margin-right: auto;">
+        <div class="small-12 columns title-heading">
+                <h1 class="bold">3D Designer & Crafter</h1>
+        </div>
+</div>
+<div style="position: absolute; left:0;">
+	<div id="designer1" style="position: relative; top:0;">
+		<img src="/img/3dtin.png" alt="Smiley face" height="64" width="64" onclick="im1();" style="cursor:pointer;">
+	</div>
+	<div id="designer2" style="position: relative; top: 30px;">
+        	<img src="/img/tinkercad.png" alt="Smiley face" height="64" width="64" onclick="im2();" style="cursor:pointer;">
+	</div>
+	<div id="designer3" style="position: relative; top: 60px;">
+        	<img src="/img/meshlab.png" alt="Smiley face" height="64" width="64" onclick="im3();" style="cursor:pointer;">
+	</div>
+</div>
+<div class="wrapper">
+    <div class="h_iframe">
+       	<div id="test3"> these are different tools tooken from the net that helps you design your own model, download it, and print it !!!</div>
+    </div> 
+</div>
+<style>
+html,body        {height:100%;}
+.wrapper         {width:90%;height:100%;margin:0 auto;background:#CCC}
+.h_iframe        {position:relative;}
+.h_iframe .ratio {display:block;width:100%;height:auto;}
+.h_iframe iframe {position:absolute;top:0;left:0;width:100%; height:100%;}
+</style>
+<script language="JavaScript">
+function im1()
+{
+	$("#test3").html('<img class="ratio" src="http://placehold.it/17x8"/><div style="top:110px" align="center"><iframe src="http://www.3dtin.com/" frameBorder="0" allowfullscreen></iframe></div>');
+};
+function im2()
+{
+        $("#test3").html('<img class="ratio" src="http://placehold.it/17x8"/><div style="top:110px" align="center"><iframe src="https://www.tinkercad.com/things/aRw4OC0Jog3-brave-uusam-blorr/edit" frameBorder="0" allowfullscreen></iframe></div>');
+};
+function im3()
+{
+        $("#test3").html('<img class="ratio" src="http://placehold.it/17x8"/><div style="top:110px" align="center"><iframe src="http://www.meshlabjs.net/" frameBorder="0" allowfullscreen></iframe></div>');
+};
+
+</script>

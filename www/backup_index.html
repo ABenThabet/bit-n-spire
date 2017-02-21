@@ -1,0 +1,135 @@
+<html> <head>
+	<title>STL Viewer</title>
+	<script src="js/sweetalert-dev.js"></script>
+	<link rel="stylesheet" href="css/sweetalert.css">
+
+	<link href="css/stlviewer.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/jscolor/jscolor.js"></script>
+	<script src="js/thingiview/Three.js"></script>
+    <script src="js/thingiview/plane.js"></script>
+    <script src="js/thingiview/thingiview.js"></script>
+	
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script>
+
+	function _(el){
+        return document.getElementById(el);
+}
+function uploadFile(){
+        var file = _("file1").files[0];
+        // alert(file.name+" | "+file.size+" | "+file.type);
+        var formdata = new FormData();
+        formdata.append("file1", file);
+        var ajax = new XMLHttpRequest();
+        ajax.upload.addEventListener("progress", progressHandler, false);
+        ajax.addEventListener("load", completeHandler, false);
+        ajax.addEventListener("error", errorHandler, false);
+        ajax.addEventListener("abort", abortHandler, false);
+        ajax.open("POST", "upload.php");
+        ajax.send(formdata);
+}
+function progressHandler(event){
+        var percent = (event.loaded / event.total) * 100;
+$('.progress-val').text(Math.round(percent).toString()+'%');
+$('.progress-in').css({"width" : Math.round(percent).toString()+'%'});
+}
+function completeHandler(event){
+	var ajax = new XMLHttpRequest();
+	ajax.addEventListener("load", completeHandler2, false);
+	ajax.open("GET", "convert.php");
+	ajax.send();
+	conversion_prog();
+}
+function completeHandler2(event){
+	 conversion_complete();
+}
+function errorHandler(event){
+        _("status").innerHTML = "Upload Failed";
+	error_show();
+}
+function abortHandler(event){
+        _("status").innerHTML = "Upload Aborted";
+}
+	$(document).ready(function() {
+		thingiurlbase = "js/thingiview";
+        thingiview = new Thingiview("stlviewer");
+        thingiview.setObjectColor("#3C7EF0");
+        thingiview.setBackgroundColor("#F");
+		thingiview.initScene();
+        thingiview.setCameraView("iso");
+		if (!Modernizr.draganddrop) {
+			$("#message").html("Your browser cannot handle drag and drop.");
+		}
+		function handleFileSelect(e) {
+			var f = e.target.files[0];
+				var reader = new FileReader();
+				// Closure to capture the file information.
+				reader.onload = (function(theFile) {
+					return function(e) {
+						var fileContents = e.target.result;
+						if (fileContents.match(/^solid/)) {
+							thingiview.loadSTLString(fileContents);
+						} else {
+							var reader2 = new FileReader();
+							reader2.onload = (function(theFile){
+								return function(e) {
+									thingiview.loadSTLBinary(e.target.result);
+								};
+							})(theFile);
+							reader2.readAsBinaryString(theFile);
+						}
+					};
+				})(f);
+				reader.readAsText(f);
+				$("#message").text(f.name);
+			}
+		
+		document.getElementById("file1").addEventListener("change", handleFileSelect, 
+false);
+		$("#backround_colour").change(function(){
+			thingiview.setBackgroundColor("#"+$(this).val());
+		});
+		$("#model_colour").change(function(){
+			thingiview.setObjectColor("#"+$(this).val());
+		});
+	});
+
+function conversion_prog(){
+	swal({
+		title: "File Conversion !!!",
+		text: "Please wait till the file gets converted to the appropriate extension",
+		imageUrl: 'loading.gif',
+		showConfirmButton: false
+	});
+};	
+	
+function conversion_complete(){
+	swal("File ready for printing!", "File uploaded to system!", "success");
+};
+
+function error_show(){
+	sweetAlert("Oops...", "Something went wrong!", "error");
+};
+	</script> </head> <body>
+
+	<form id="upload_form" enctype="multipart/form-data" method="post">
+  <input type="file" name="file1" id="file1"><br>
+  <input type="button" value="Upload File" onclick="uploadFile();"> <br>
+<div class="progress">
+ <span 
+class="progress-val">Load STL or OBJ file</span>
+    <span class="progress-bar"><span class="progress-in" style="width: 0%"></span></span>  <h3 id="status"></h3> </form>
+</div>	<div id="stlviewer"></div>
+	<div id="message"></div>
+	<div class="settings">
+		Background: <input class="color" id="backround_colour" value="000000"> &nbsp; 
+Model: <input class="color" id="model_colour" value="C0D8F0">
+	<br>Zoom: <input onclick="thingiview.setCameraZoom(5);" type="button" value="Zoom +" />
+| <input onclick="thingiview.setCameraZoom(-5);" type="button" value="Zoom -" />
+	<br>Rotation: <input onclick="thingiview.setRotation(true);" type="button" value="on" />
+| <input onclick="thingiview.setRotation(false);" type="button" value="off" />
+</div> </body> </html>
